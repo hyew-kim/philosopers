@@ -20,7 +20,6 @@ int	main(int argc, char *argv[])
 		return(ft_exit(ERR, "Setting Error", &rule));
 	if (set_mutex(&rule))
 		return (ft_exit(ERR, "Mutex Setting Error", &rule));
-	printf("OK\n");
 	if (phlio_start(&rule))
 		return (ft_exit(ERR, "Thread Error", &rule));
 	return (0);
@@ -34,7 +33,8 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 	rule->time_dead =  atoi(argv[2]);
 	rule->time_eat = atoi(argv[3]);
 	rule->time_sleep = atoi(argv[4]);
-	rule->limit = 0;
+	rule->limit = 1;
+	rule->cnt_full_philo = 0;
 	if (argc == 6)
 		rule->limit = atoi(argv[5]);
 	if (rule->total_philo < 1 || rule->time_dead < 0

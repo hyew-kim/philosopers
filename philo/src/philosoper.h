@@ -44,7 +44,7 @@ typedef struct		s_rule
 	int				time_eat;
 	int				time_sleep;
 	int				limit;
-	int				cnt_eat;
+	int				cnt_full_philo;
 	t_mu			f[PHILO_MAX];
 	t_mu			print;
 	t_philo			philo[PHILO_MAX];

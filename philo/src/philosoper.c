@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 		return (ft_exit(ERR, "Mutex Setting Error", &rule));
 	if (phlio_start(&rule))
 		return (ft_exit(ERR, "Thread Error", &rule));
-	return (0);
+	return (ft_exit(SUC, "", &rule));
 }
 
 int	set_struct(int argc, char *argv[], t_rule *rule)
@@ -62,6 +62,8 @@ int	set_mutex(t_rule *rule)
 			return (ERR);
 	if (pthread_mutex_init(&rule->print, NULL))
 		return (ERR);
+	if (pthread_mutex_init(&rule->eat, NULL))
+		return (ERR);
 	return (SUC);
 }
 
@@ -74,8 +76,12 @@ int	ft_exit(int flag,char *message, t_rule *rule)
 	if (ft_strncmp(message, "Input", 5))
 	{
 		pthread_mutex_destroy(&rule->print);
+		pthread_mutex_destroy(&rule->eat);
 		while (++i < rule->total_philo)
+		{
 			pthread_mutex_destroy(&rule->f[i]);
+			pthread_detach(rule->philo[i].thread);
+		}
 	}
 	if (flag == ERR)
 	{
@@ -84,7 +90,6 @@ int	ft_exit(int flag,char *message, t_rule *rule)
 	}
 	else
 	{
-		print_exit(SUC, message, rule);
 		return (EXIT_SUCCESS);
 	}
 }

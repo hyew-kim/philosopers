@@ -31,7 +31,7 @@ typedef struct		s_philo
 	int				id;
 	int				eat_count;
 	t_th			thread;
-	long long		current;
+	long long		last_eat;
 	int				fork_l;
 	int				fork_r;
 	struct s_rule	*rule;
@@ -47,9 +47,11 @@ typedef struct		s_rule
 	int				cnt_full_philo;
 	t_mu			f[PHILO_MAX];
 	t_mu			print;
+	t_mu			eat;
 	t_philo			philo[PHILO_MAX];
 	long long		begin;
 	int				run;
+	int				dead;
 }					t_rule;
 
 /*prototype*/
@@ -75,4 +77,7 @@ int					eating(t_philo *philo);
 int					put_fork(t_philo *philo);
 int					sleeping(t_philo *philo);
 int					thinking(t_philo *philo);
+
+void				check_full(t_rule *rule);
+void				check_dead(t_rule *rule);
 #endif

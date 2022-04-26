@@ -7,17 +7,17 @@ int	phlio_start(t_rule *rule)
 	
 	i = -1;
 	rule->run = 0;
+	rule->dead = 0;
 	while (++i < rule->total_philo)
 	{
 		philo = &rule->philo[i];
+		philo->last_eat = get_time_ms();
 		if (pthread_create(&philo->thread, NULL, routine, (void *)(philo)))
 			return (ERR);
 	}
 	rule->begin = get_time_ms();
 	rule->run = 1;
-	i = -1;
-	while (++i < rule->total_philo)
-		pthread_join(rule->philo[i].thread, NULL);
+	check_dead(rule);
 	return (SUC);
 }
 
@@ -31,16 +31,12 @@ void	*routine(void *arg)
 	print_condition(100, philo);
 	if (philo->id % 2)
 		loop(philo->rule->time_eat);
-	while (1)
+	while (philo->rule->dead == 0)
 	{
 		if (get_fork(philo))
 			break;
 		eating(philo);
 		put_fork(philo);
-		if (philo->rule->limit && philo->eat_count >= philo->rule->limit)
-			philo->rule->cnt_full_philo++;
-		if (philo->rule->cnt_full_philo >= philo->rule->total_philo)
-			break;
 		sleeping(philo);
 		thinking(philo);
 	}

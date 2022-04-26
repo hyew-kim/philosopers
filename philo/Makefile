@@ -9,6 +9,7 @@ D_UTIL = util/
 SRC_LIST = philosoper.c\
 	thread.c\
 	philo_routine.c\
+	check.c\
 	$(D_UTIL)ft_atoi.c\
 	$(D_UTIL)ft_strncmp.c\
 	$(D_UTIL)ft_putstr_fd.c\
@@ -29,12 +30,13 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) debug
 
 clean:
 	rm -rf $(OBJS)
 
 re: fclean all
+
 debug : $(OBJS)
 	$(CC) $(CFLAGS2) $^ -o $@
 phony : philo all re fclean clean

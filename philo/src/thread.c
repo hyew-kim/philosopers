@@ -30,14 +30,14 @@ void	*routine(void *arg)
 		usleep(1);
 	print_condition(100, philo);
 	if (philo->id % 2)
-		loop(100);
+		loop(philo->rule->time_eat);
 	while (1)
 	{
 		if (get_fork(philo))
 			break;
 		eating(philo);
 		put_fork(philo);
-		if (philo->eat_count >= philo->rule->limit)
+		if (philo->rule->limit && philo->eat_count >= philo->rule->limit)
 			philo->rule->cnt_full_philo++;
 		if (philo->rule->cnt_full_philo >= philo->rule->total_philo)
 			break;

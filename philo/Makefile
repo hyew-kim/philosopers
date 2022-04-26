@@ -9,6 +9,8 @@ D_UTIL = util/
 SRC_LIST = philosoper.c\
 	thread.c\
 	philo_routine.c\
+	$(D_UTIL)ft_atoi.c\
+	$(D_UTIL)ft_strncmp.c\
 	$(D_UTIL)ft_putstr_fd.c\
 	$(D_UTIL)ft_putendl_fd.c\
 	$(D_UTIL)ft_putchar_fd.c\

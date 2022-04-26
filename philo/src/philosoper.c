@@ -13,7 +13,7 @@ int	main(int argc, char *argv[])
 	{
 		if (argv[i][0] == '-')
 			return (ft_exit(ERR, "Input Error", &rule));
-		if (i == 1 && atoi(argv[i]) < 1)
+		if (i == 1 && ft_atoi(argv[i]) < 1)
 			return (ft_exit(ERR, "Input Error", &rule));
 	}
 	if (set_struct(argc, argv, &rule))
@@ -29,14 +29,14 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 {
 	int	i;
 
-	rule->total_philo =  atoi(argv[1]);
-	rule->time_dead =  atoi(argv[2]);
-	rule->time_eat = atoi(argv[3]);
-	rule->time_sleep = atoi(argv[4]);
-	rule->limit = 1;
+	rule->total_philo =  ft_atoi(argv[1]);
+	rule->time_dead =  ft_atoi(argv[2]);
+	rule->time_eat = ft_atoi(argv[3]);
+	rule->time_sleep = ft_atoi(argv[4]);
+	rule->limit = 0;
 	rule->cnt_full_philo = 0;
 	if (argc == 6)
-		rule->limit = atoi(argv[5]);
+		rule->limit = ft_atoi(argv[5]);
 	if (rule->total_philo < 1 || rule->time_dead < 0
 	|| rule->time_eat < 0 || rule->time_sleep < 0 || rule->limit < 0)
 		return (ERR);

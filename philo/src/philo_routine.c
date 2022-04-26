@@ -5,7 +5,6 @@ int	get_fork(t_philo *philo)
 	int	l;
 	int	r;
 
-	philo->current = get_time_ms();
 	l = philo->fork_l;
 	r = philo->fork_r;
 	print_condition(FORK, philo);
@@ -19,7 +18,6 @@ int	get_fork(t_philo *philo)
 
 int	eating(t_philo *philo)
 {
-	philo->current = get_time_ms();
 	philo->eat_count++;
 	print_condition(EAT, philo);
 	loop(philo->rule->time_eat);
@@ -40,7 +38,6 @@ int	put_fork(t_philo *philo)
 
 int	sleeping(t_philo *philo)
 {
-	philo->current = get_time_ms();
 	print_condition(SLEEP, philo);
 	loop(philo->rule->time_sleep);
 	return (SUC);
@@ -48,7 +45,6 @@ int	sleeping(t_philo *philo)
 
 int	thinking(t_philo *philo)
 {
-	philo->current = get_time_ms();
 	print_condition(THINK, philo);
 	return (SUC);
 }

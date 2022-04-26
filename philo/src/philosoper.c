@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosoper.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 21:06:43 by hyewkim           #+#    #+#             */
+/*   Updated: 2022/04/26 21:06:46 by hyewkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philosoper.h"
 
 int	main(int argc, char *argv[])
 {
 	t_rule	rule;
-	int	i;
+	int		i;
 
 	if (argc != 5 && argc != 6)
 		return (ft_exit(ERR, "Input Error", &rule));
@@ -17,7 +28,7 @@ int	main(int argc, char *argv[])
 			return (ft_exit(ERR, "Input Error", &rule));
 	}
 	if (set_struct(argc, argv, &rule))
-		return(ft_exit(ERR, "Setting Error", &rule));
+		return (ft_exit(ERR, "Setting Error", &rule));
 	if (set_mutex(&rule))
 		return (ft_exit(ERR, "Mutex Setting Error", &rule));
 	if (phlio_start(&rule))
@@ -29,8 +40,8 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 {
 	int	i;
 
-	rule->total_philo =  ft_atoi(argv[1]);
-	rule->time_dead =  ft_atoi(argv[2]);
+	rule->total_philo = ft_atoi(argv[1]);
+	rule->time_dead = ft_atoi(argv[2]);
 	rule->time_eat = ft_atoi(argv[3]);
 	rule->time_sleep = ft_atoi(argv[4]);
 	rule->limit = 0;
@@ -38,7 +49,7 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 	if (argc == 6)
 		rule->limit = ft_atoi(argv[5]);
 	if (rule->total_philo < 1 || rule->time_dead < 0
-	|| rule->time_eat < 0 || rule->time_sleep < 0 || rule->limit < 0)
+		|| rule->time_eat < 0 || rule->time_sleep < 0 || rule->limit < 0)
 		return (ERR);
 	i = -1;
 	while (++i < rule->total_philo)
@@ -46,7 +57,7 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 		rule->philo[i].id = i;
 		rule->philo[i].eat_count = 0;
 		rule->philo[i].fork_l = i;
-		rule->philo[i].fork_r  = (i + 1) % rule->total_philo;
+		rule->philo[i].fork_r = (i + 1) % rule->total_philo;
 		rule->philo[i].rule = rule;
 	}
 	return (SUC);
@@ -54,11 +65,11 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 
 int	set_mutex(t_rule *rule)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < rule->total_philo)
-		if(pthread_mutex_init(&rule->f[i], NULL))
+		if (pthread_mutex_init(&rule->f[i], NULL))
 			return (ERR);
 	if (pthread_mutex_init(&rule->print, NULL))
 		return (ERR);
@@ -67,12 +78,11 @@ int	set_mutex(t_rule *rule)
 	return (SUC);
 }
 
-int	ft_exit(int flag,char *message, t_rule *rule)
+int	ft_exit(int flag, char *message, t_rule *rule)
 {
-	int i;
-	
-	i = -1;
+	int	i;
 
+	i = -1;
 	if (ft_strncmp(message, "Input", 5))
 	{
 		pthread_mutex_destroy(&rule->print);

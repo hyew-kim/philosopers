@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_routine.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 21:06:58 by hyewkim           #+#    #+#             */
+/*   Updated: 2022/04/26 21:07:00 by hyewkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosoper.h"
 
 int	get_fork(t_philo *philo)
@@ -40,7 +52,7 @@ int	put_fork(t_philo *philo)
 	r = philo->fork_r;
 	pthread_mutex_unlock(&philo->rule->f[l]);
 	pthread_mutex_unlock(&philo->rule->f[r]);
-	return(SUC);
+	return (SUC);
 }
 
 int	sleeping(t_philo *philo)

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   thread.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 21:07:05 by hyewkim           #+#    #+#             */
+/*   Updated: 2022/04/26 21:07:07 by hyewkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosoper.h"
 
 int	phlio_start(t_rule *rule)
 {
 	int		i;
 	t_philo	*philo;
-	
+
 	i = -1;
 	rule->run = 0;
 	rule->dead = 0;
@@ -24,8 +36,8 @@ int	phlio_start(t_rule *rule)
 void	*routine(void *arg)
 {
 	t_philo	*philo;
+
 	philo = (t_philo *)arg;
-	
 	while (philo->rule->run == 0)
 		usleep(1);
 	print_condition(100, philo);
@@ -34,7 +46,7 @@ void	*routine(void *arg)
 	while (philo->rule->dead == 0)
 	{
 		if (get_fork(philo))
-			break;
+			break ;
 		eating(philo);
 		put_fork(philo);
 		sleeping(philo);

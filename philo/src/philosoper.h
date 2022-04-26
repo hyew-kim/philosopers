@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philosoper.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 21:06:51 by hyewkim           #+#    #+#             */
+/*   Updated: 2022/04/26 21:06:53 by hyewkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILOSOPER_H
 # define PHILOSOPER_H
 
@@ -13,8 +25,8 @@
 # define PHILO_MAX 200
 # define TIME_MIN 60
 
-typedef pthread_t t_th;
-typedef pthread_mutex_t t_mu;
+typedef pthread_t		t_th;
+typedef pthread_mutex_t	t_mu;
 
 typedef enum e_flag{
 	SUC = 0,
@@ -26,7 +38,7 @@ typedef enum e_flag{
 	DEAD
 }t_flag;
 /*struct*/
-typedef struct		s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				eat_count;
@@ -37,7 +49,7 @@ typedef struct		s_philo
 	struct s_rule	*rule;
 }					t_philo;
 
-typedef struct		s_rule
+typedef struct s_rule
 {
 	int				total_philo;
 	int				time_dead;
@@ -67,7 +79,7 @@ long long			get_time_ms(void);
 int					set_struct(int argc, char *argv[], t_rule *rule);
 int					set_mutex(t_rule *rule);
 int					phlio_start(t_rule *rule);
-int					ft_exit(int flag,char *message, t_rule *rule);
+int					ft_exit(int flag, char *message, t_rule *rule);
 void				print_exit(int flag, char *message, t_rule *rule);
 void				print_condition(int flag, t_philo *philo);
 void				*routine(void *arg);

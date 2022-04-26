@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/26 21:06:30 by hyewkim           #+#    #+#             */
+/*   Updated: 2022/04/26 21:06:33 by hyewkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosoper.h"
 
 void	check_dead(t_rule *rule)
@@ -30,9 +42,9 @@ void	check_full(t_rule *rule)
 
 	i = -1;
 	while (rule->limit && ++i < rule->total_philo
-	&& rule->philo[i].eat_count >= rule->limit)
+		&& rule->philo[i].eat_count >= rule->limit)
 		rule->cnt_full_philo++;
 	if (rule->cnt_full_philo >= rule->total_philo)
-		rule->dead = 1;	
+		rule->dead = 1;
 	return ;
 }

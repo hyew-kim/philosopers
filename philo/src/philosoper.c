@@ -71,7 +71,7 @@ int	ft_exit(int flag,char *message, t_rule *rule)
 	
 	i = -1;
 
-	if (strncmp(message, "Input", 5))
+	if (ft_strncmp(message, "Input", 5))
 	{
 		pthread_mutex_destroy(&rule->print);
 		while (++i < rule->total_philo)

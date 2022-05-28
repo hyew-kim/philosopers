@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:30 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/04/26 21:06:33 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/28 17:04:39 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	check_full(t_rule *rule)
 	int	i;
 
 	i = -1;
+	rule->cnt_full_philo = 0;
 	while (rule->limit && ++i < rule->total_philo
 		&& rule->philo[i].eat_count >= rule->limit)
 		rule->cnt_full_philo++;

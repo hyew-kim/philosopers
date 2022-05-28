@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:07:05 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/04/26 21:07:07 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/28 16:46:54 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (philo->rule->run == 0)
 		usleep(1);
-	print_condition(100, philo);
 	if (philo->id % 2)
 		loop(philo->rule->time_eat);
 	while (philo->rule->dead == 0)

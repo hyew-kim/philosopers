@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosoper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:43 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/04/26 21:06:46 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:23:17 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 		rule->philo[i].id = i;
 		rule->philo[i].eat_count = 0;
 		rule->philo[i].fork_l = i;
-		rule->philo[i].fork_r = (i + 1) % rule->total_philo;
+		rule->philo[i].fork_r = i - 1;
+		if (i == 0)
+			rule->philo[i].fork_r = rule->total_philo - 1;
 		rule->philo[i].rule = rule;
 	}
 	return (SUC);

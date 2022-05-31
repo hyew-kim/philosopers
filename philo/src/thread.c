@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:07:05 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/28 16:46:54 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:18:32 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	*routine(void *arg)
 		put_fork(philo);
 		sleeping(philo);
 		thinking(philo);
+		usleep(100);
 	}
 	return (NULL);
 }

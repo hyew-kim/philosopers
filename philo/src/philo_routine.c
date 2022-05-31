@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:58 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/04/26 21:07:00 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:19:11 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	get_fork(t_philo *philo)
 
 	l = philo->fork_l;
 	r = philo->fork_r;
-	print_condition(FORK, philo);
 	if (l == r)
 		return (ERR);
 	if (philo->rule->dead)
 		return (ERR);
 	pthread_mutex_lock(&philo->rule->f[l]);
-	print_condition(FORK, philo);
 	pthread_mutex_lock(&philo->rule->f[r]);
+	print_condition(FORK, philo);
+	print_condition(FORK, philo);
 	return (SUC);
 }
 
@@ -34,7 +34,6 @@ int	eating(t_philo *philo)
 {
 	if (philo->rule->dead)
 		return (ERR);
-	philo->eat_count++;
 	print_condition(EAT, philo);
 	philo->last_eat = get_time_ms();
 	loop(philo->rule->time_eat);
@@ -46,6 +45,7 @@ int	put_fork(t_philo *philo)
 	int	l;
 	int	r;
 
+	philo->eat_count++;
 	if (philo->rule->dead)
 		return (ERR);
 	l = philo->fork_l;

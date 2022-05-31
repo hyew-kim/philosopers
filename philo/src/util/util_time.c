@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_time.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:07:28 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/04/26 21:07:43 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:17:51 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	loop(long long interval)
 
 	termination = interval + get_time_ms();
 	while (termination > get_time_ms())
-		;
+		usleep(50);
 	return ;
 }

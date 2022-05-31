@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:30 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/28 17:04:39 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:01:28 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ void	check_dead(t_rule *rule)
 		i = 0;
 		while (i < rule->total_philo && rule->dead == 0)
 		{
-			pthread_mutex_lock(&(rule->eat));
 			chk_time = get_time_ms() - rule->philo[i].last_eat;
 			if (chk_time > rule->time_dead)
 			{
 				print_condition(DEAD, &rule->philo[i]);
 				rule->dead = 1;
 			}
-			pthread_mutex_unlock(&(rule->eat));
 			i++;
 		}
 	}
@@ -42,6 +40,7 @@ void	check_full(t_rule *rule)
 
 	i = -1;
 	rule->cnt_full_philo = 0;
+
 	while (rule->limit && ++i < rule->total_philo
 		&& rule->philo[i].eat_count >= rule->limit)
 		rule->cnt_full_philo++;

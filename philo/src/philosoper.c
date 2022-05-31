@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:43 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/31 17:23:17 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:56:18 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	set_struct(int argc, char *argv[], t_rule *rule)
 	rule->cnt_full_philo = 0;
 	if (argc == 6)
 		rule->limit = ft_atoi(argv[5]);
-	if (rule->total_philo < 1 || rule->time_dead < 0
+	if (rule->total_philo < 1 || rule->total_philo > 200 || rule->time_dead < 0
 		|| rule->time_eat < 0 || rule->time_sleep < 0 || rule->limit < 0)
 		return (ERR);
 	i = -1;
@@ -85,7 +85,7 @@ int	ft_exit(int flag, char *message, t_rule *rule)
 	int	i;
 
 	i = -1;
-	if (ft_strncmp(message, "Input", 5))
+	if (ft_strncmp(message, "Input", 5) && ft_strncmp(message, "Setting", 7))
 	{
 		pthread_mutex_destroy(&rule->print);
 		pthread_mutex_destroy(&rule->eat);

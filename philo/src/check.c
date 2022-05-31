@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:30 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/31 17:01:28 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/05/31 17:56:32 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	check_full(t_rule *rule)
 
 	i = -1;
 	rule->cnt_full_philo = 0;
-
 	while (rule->limit && ++i < rule->total_philo
 		&& rule->philo[i].eat_count >= rule->limit)
 		rule->cnt_full_philo++;

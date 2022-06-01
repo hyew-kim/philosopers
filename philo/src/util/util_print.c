@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:07:15 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/31 17:19:18 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:36:46 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	print_condition(int flag, t_philo *philo)
 		printf("%lld %d is thinking\n", current - start_time, philo->id);
 	else if (flag == DEAD)
 		printf("%lld %d is died\n", current - start_time, philo->id);
-	pthread_mutex_unlock(&philo->rule->print);
+	if (philo->rule->dead == 0)
+		pthread_mutex_unlock(&philo->rule->print);
 	return ;
 }

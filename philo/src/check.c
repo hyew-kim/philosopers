@@ -6,7 +6,7 @@
 /*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:30 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/31 17:56:32 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/06/01 16:32:50 by hyewkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	check_dead(t_rule *rule)
 	while (rule->dead == 0)
 	{
 		check_full(rule);
+		if (rule->dead)
+			print_condition(DEAD, &rule->philo[100]);
 		i = 0;
 		while (i < rule->total_philo && rule->dead == 0)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosoper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyewonkim <hyewonkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:43 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/06/01 16:34:40 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/06/26 15:39:02 by hyewonkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ int	main(int argc, char *argv[])
 
 	if (argc != 5 && argc != 6)
 		return (ft_exit(ERR, "Input Error", &rule));
-	i = -1;
+	i = 0;
 	while (++i < argc)
 	{
-		if (argv[i][0] == '-')
-			return (ft_exit(ERR, "Input Error", &rule));
-		if (i == 1 && ft_atoi(argv[i]) < 1)
+		if (ft_strncmp(argv[i], "0", 1) && ft_atoi(argv[i]) <= 0)
 			return (ft_exit(ERR, "Input Error", &rule));
 	}
 	if (set_struct(argc, argv, &rule))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyewonkim <hyewonkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:07:15 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/06/01 16:36:46 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/06/26 16:17:39 by hyewonkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	print_condition(int flag, t_philo *philo)
 		printf("%lld %d is sleeping\n", current - start_time, philo->id);
 	else if (flag == THINK)
 		printf("%lld %d is thinking\n", current - start_time, philo->id);
-	else if (flag == DEAD)
+	if (flag == DEAD)
 		printf("%lld %d is died\n", current - start_time, philo->id);
-	if (philo->rule->dead == 0)
+	else
 		pthread_mutex_unlock(&philo->rule->print);
 	return ;
 }

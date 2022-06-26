@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_routine.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyewkim <hyewkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyewonkim <hyewonkim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 21:06:58 by hyewkim           #+#    #+#             */
-/*   Updated: 2022/05/31 17:19:11 by hyewkim          ###   ########.fr       */
+/*   Updated: 2022/06/26 16:20:06 by hyewonkim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	eating(t_philo *philo)
 	if (philo->rule->dead)
 		return (ERR);
 	print_condition(EAT, philo);
+	philo->eat_count++;
 	philo->last_eat = get_time_ms();
 	loop(philo->rule->time_eat);
 	return (SUC);
@@ -45,7 +46,6 @@ int	put_fork(t_philo *philo)
 	int	l;
 	int	r;
 
-	philo->eat_count++;
 	if (philo->rule->dead)
 		return (ERR);
 	l = philo->fork_l;
